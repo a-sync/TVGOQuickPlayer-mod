@@ -1,0 +1,33 @@
+
+
+
+
+/* Color of the progress bar */
+.sqp-ui-main-bgcolor {
+    background: #00D874;
+}
+
+
+/* hover color for the buttons */
+.sqp-button:hover {
+  color: #00D874;
+}
+
+/* volume level color */
+.sqp-volume-bar-level {
+  background-color: #00D874;
+}
+
+/* volume level end point */
+.sqp-volume-bar-level-endpoint {
+  background-color: #00D874;
+}
+
+.sqp-customer-overlay { 
+    position: absolute;
+    pointer-events: inherit;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 50px;
+}

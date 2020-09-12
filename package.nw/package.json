@@ -1,0 +1,27 @@
+{
+    "private": true,
+    "main": "main_start.js",
+    "dependencies": {
+        "SQPlayer.js": "*",
+        "SQDownloader.js": "*",
+        "nodejs-websocket": "*"
+    },
+    "window": {
+        "show_in_taskbar": true,
+        "show": false,
+        "frame":false,
+        "width": 960,
+        "height": 640,
+        "icon": "./resources/app_icon.png",
+        "resizable":true,
+        "title": "TVGOQuickPlayer"
+    },
+    "chromium-args": "--load-extension='./package.nw/chromecast_caf_extension' --use-angle=d3d9 --disable-d3d11 --enable-webgl --enable-native-gpu-memory-buffers --enable-zero-copy --ignore-gpu-blacklist --force-gpu-rasterization --enable-gpu-memory-buffer-compositor-resources",
+    "name": "TVGOQuickPlayer",
+    "description": "TVGOQuickPlayer",
+    "version": "8.7.10.1",
+    
+    "env": "development",
+    "appScheme": "tvgoqplayer",
+    "localization":"en-us"
+}
