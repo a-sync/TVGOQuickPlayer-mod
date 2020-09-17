@@ -1062,6 +1062,8 @@ class VOBackgroundContext extends EventEmitter {
             viaccessorca.appBackgroundContext.windowRefs[id] = win;
             // register a listener on the 'closed' event to be able to clean-up the ref list
             win.on('closed', this._filterOpenedWindowRefs.bind(this));
+            
+            //win.showDevTools();
 
             win.window.voAppBackgroundContext = this;
 
@@ -1148,7 +1150,7 @@ class VOBackgroundContext extends EventEmitter {
             }, 'VOOfflineApp');
         } else {
             viaccessorca.appBackgroundContext.openNewWindow('entry.html', {
-                show: false,
+                show: true,
                 frame: nw.App.manifest.window.frame,
                 show_in_taskbar: true,
                 width: nw.App.manifest.window.width,

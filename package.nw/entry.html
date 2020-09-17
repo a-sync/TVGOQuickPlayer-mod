@@ -1,0 +1,130 @@
+<html>
+<head>
+    <link rel="stylesheet" href="resources/quickplayer.css">
+    <link rel="stylesheet" href="resources/customization.css">
+
+    <script src="./resources/vo_app_init_logic.js"></script>
+
+    <script src="./resources/vo-player-window-logic.js"></script>
+    <script src="./resources/vo-customer-iframe-mgt.js"></script>
+
+    <!-- load customer data -->
+    <script src="./resources/customerdata.js" charset="utf-8"></script>
+
+    <style>
+        @font-face {
+            font-family: 'local_Glyphs';
+            src: url('resources/fonts/glyphicons.ttf');
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            margin: 0px
+        }
+
+        #window-tb {
+            width: 100%;
+            height: 26px;
+            background-color: #151515;
+        }
+
+        #close-btn {
+            font-family: 'local_Glyphs';
+            float: right;
+            margin-right: 3px;
+            width: 43px;
+            height: 18px;
+            display: inline-block;
+            text-align: center;
+            line-height: 18px;
+            color: #dfe1e5;
+            vertical-align: top;
+            -webkit-app-region: no-drag;
+            background-color: #303030;
+        }
+
+        #close-btn:hover {
+            color: #ffffff;
+            cursor: pointer;
+            background-color: #404040;
+        }
+
+        #close-btn:before {
+            content: "\E896";
+            font-size: 12px;
+            color: white;
+        }
+
+        .window-include-toolbar {
+            width: 100%;
+            height: calc(100% - 26px);
+        }
+
+        .window-full-size {
+            width: 100%;
+            height: 100%;
+        }
+
+        .window-small-border {
+            border: solid 1px #FFFFFF;
+        }
+    </style>
+
+    <script src="./node_modules/SQRenderer.js/require.js"></script>
+    <script src="./node_modules/SQPlayer.js/require.js"></script>
+
+
+    <script src="./node_modules/SQPlayer.js/vo-player-controller.js"></script>
+    <script src="./resources/voplayer_ui_setuplogic.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/cast/sdk/libs/sender/1.0/cast_framework.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+
+</head>
+
+<body onload="onBodyLoad()">
+
+    <div id="window-tb" style="-webkit-app-region: drag">
+        <div id="close-btn" onclick="fakeClose()"></div>
+    </div>
+    <div id="window-content" class="window-include-toolbar">
+        <div id="sq-player-area" class="noselect"></div>
+    </div>
+    
+    <script>
+    function switchChannel() {
+        var id = document.getElementById('channelselector').value;
+        var win = nw.Window.get();
+        //var uid = encodeURIComponent(voplayerNativeLib.getDeviceUniqueId());
+        var currentUrl = voGlobalCtx.voPlayerRef.currentMedia_.url;
+        var urlParts = currentUrl.split('/index.m3u8?');
+        var urlBeginningParts = urlParts[0].split('/').slice(0,-1).join('/');
+        var newUrl = urlBeginningParts+'/'+id+'/index.m3u8?'+urlParts[1];
+        voAppBackgroundContext._processIncomingWSMsg(JSON.stringify({
+            type:"action",
+            action:"play",
+            playInfo:{
+                ui:{
+                    fullscreen:win.isFullscreen,
+                    left:win.x,
+                    top:win.y,
+                    height:win.height,
+                    width:win.width,
+                    alwaysOnTop:win.isAlwaysOnTop
+                },
+                media:{
+                    url:newUrl,
+                    startTime:-1,
+                    vmxBootAddress:voGlobalCtx.voPlayerRef.currentMedia_.vmxBootAddress,
+                    vmxCompanyName:voGlobalCtx.voPlayerRef.currentMedia_.vmxCompanyName,
+                    fromExtended:voGlobalCtx.voPlayerRef.currentMedia_.fromExtended
+                }
+            }
+        }));
+    }
+    </script>
+</body>
+
+</html>

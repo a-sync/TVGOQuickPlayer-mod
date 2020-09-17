@@ -1,0 +1,199 @@
+
+<div class="sqp-optitem-selected-content" style="display: none;"><svg-icon class="svg-icon opt-item-cur-pointer" src="resources/images/checked.svg"></svg-icon></div>
+
+<div class="sqp-customer-overlay"></div>
+
+<!-- video element which will play the stream -->
+
+<div class="sqp-fullscreen-esc-msg" style="display: none">
+  <strong>Player is now displayed in fullscreen.</strong><br/>Press 'Escape' at any time to exit fullscreen.
+</div>
+<div class="sqp-chromecast-err-msg" style="display: none">
+  <strong>Error while trying to display content on Chromecast.</strong>
+</div>
+
+<!-- elements with class 'sqp-buffering' are detected as 'Buffering notification section' by the script 'vo-player-controller.js'
+events listeners and state are driven by the script itself (no need to declare anything more) -->
+<div class="sqp-buffering sqp-center">
+  <div class="sqp-buffering-value">Buffering</div>
+  <img class="sqp-buffering-img sqp-buffering-rotation-anim" src="resources/sqp-loading-wheel.png">
+</div>
+<div class="sqp-audio-only sqp-center sqp-anim-basic" style="display: none"></div>
+
+  <div class="sqp-video-overlay sqp-fade-out-400">
+
+    <div class="sqp-optmenu sqp-optmenu-1st">
+
+      <div class="sqp-optmenu-global">
+        <!-- sqp-optmenu-1st -->
+        <div class="sqp-opt-item sqp-opt-item-audio sqp-opt-value-pick">
+          <div class="sqp-opt-name sqp-audio-txt">Audio</div><div class="sqp-opt-value sqp-opt-audio-text">?</div><div class="sqp-opt-sub-select-arrow"><svg-icon class="svg-icon pick-arrow" src="resources/images/right-arrow-min.svg"></svg-icon></div>
+        </div>
+        <div class="sqp-opt-item sqp-opt-item-subtitles sqp-opt-value-pick">
+          <div class="sqp-opt-name sqp-subtitle-txt">Subtitles/CC</div><div class="sqp-opt-value sqp-opt-subtitles-text">?</div><div class="sqp-opt-sub-select-arrow"><svg-icon class="svg-icon pick-arrow" src="resources/images/right-arrow-min.svg"></svg-icon></div>
+        </div>
+        <div class="sqp-opt-item sqp-opt-item-quality sqp-opt-value-pick">
+          <div class="sqp-opt-name sqp-quality-txt">Quality</div><div class="sqp-opt-value sqp-opt-quality-text">Auto ?</div><div class="sqp-opt-sub-select-arrow"><svg-icon class="svg-icon pick-arrow" src="resources/images/right-arrow-min.svg"></svg-icon></div>
+        </div>
+      </div>
+
+      <div class="sqp-optmenu-audio sqp-optmenu-2nd" style="display: none;">
+        <!-- sqp-optmenu-2nd -->
+          <div class="sqp-opt-title sqp-opt-item"><div class="sqp-opt-title-back"><svg-icon class="svg-icon" src="resources/images/back.svg"></svg-icon></div><div class="sqp-opt-value-2nd sqp-opt-title-2nd sqp-audio-txt">Audio</div></div>
+          <div class="sqp-opt-list-container">
+            <div class="sqp-opt-items-list">
+              <!-- below is an example of how this list will be filled by the Squadeo player controller
+              the %POINTER% placeholder will contain the innerHTML content of div .sqp-optitem-selected-content when the list item is curently being used
+                <div class="sqp-opt-item sqp-opt-select" trackid=-1><div class="opt-item-select" trackid=-1>%POINTER%</div><div class="sqp-opt-value-2nd">English</div></div>
+              -->
+          </div>
+        </div>
+      </div>
+
+      <div class="sqp-optmenu-quality sqp-optmenu-2nd" style="display: none;">
+        <!-- sqp-optmenu-2nd -->
+          <div class="sqp-opt-title sqp-opt-item"><div class="sqp-opt-title-back"><svg-icon class="svg-icon" src="resources/images/back.svg"></svg-icon></div><div class="sqp-opt-value-2nd sqp-opt-title-2nd sqp-quality-txt">Quality</div></div>
+          <div class="sqp-opt-list-container">
+            <div class="sqp-opt-items-list">
+              <!-- below is an example of how this list will be filled by the Squadeo player controller
+              the %POINTER% placeholder will contain the innerHTML content of div sqp-optitem-selected-content when the list item is curently being used
+                <div class="sqp-opt-item sqp-opt-select" levelid=-1><div class="opt-item-select" levelid=-1>%POINTER%</div><div class="sqp-opt-value-2nd">OFF</div></div>
+              -->
+            </div>
+          </div>
+      </div>
+
+      <div class="sqp-optmenu-chromecast sqp-optmenu-2nd" style="display: none;">
+        <!-- sqp-optmenu-2nd -->
+          <div class="sqp-opt-title sqp-opt-item"><div class="sqp-opt-title-back"><svg-icon class="svg-icon" src="resources/images/back.svg"></svg-icon></div><div class="sqp-opt-value-2nd sqp-opt-title-2nd sqp-chromecast-txt">ChromeCast</div></div>
+          <div class="sqp-opt-list-container">
+            <div class="sqp-opt-items-list">
+              <!-- below is an example of how this list will be filled by the Squadeo player controller
+              the %POINTER% placeholder will contain the innerHTML content of div sqp-optitem-selected-content when the list item is curently being used
+                <div class="sqp-opt-item sqp-opt-select" levelid=-1><div class="opt-item-select" levelid=-1>%POINTER%</div><div class="sqp-opt-value-2nd">Auto</div></div>
+              -->
+            </div>
+          </div>
+      </div>
+
+      <div class="sqp-optmenu-subtitles sqp-optmenu-2nd" style="display: none;">
+        <!-- sqp-optmenu-2nd -->
+          <div class="sqp-opt-title sqp-opt-item"><div class="sqp-opt-title-back"><svg-icon class="svg-icon" src="resources/images/back.svg"></svg-icon></div><div class="sqp-opt-value-2nd sqp-opt-title-2nd sqp-subtitle-txt">Subtitles / CC</div></div>
+
+          <div class="sqp-opt-list-container">
+            <div class="sqp-opt-items-list">
+              <!-- below is an example of how this list will be filled by the Squadeo player controller
+              the %POINTER% placeholder will contain the innerHTML content of div .sqp-optitem-selected-content when the list item is curently being used
+                <div class="sqp-opt-item sqp-opt-select" trackid=-1><div class="opt-item-select" trackid=-1>%POINTER%</div><div class="sqp-opt-value-2nd">Off</div></div>
+              -->
+            </div>
+          </div>
+      </div>
+    </div>
+
+<!-- section containing all the playback controls -->
+<div class="sqp-video-controls">
+
+  <!-- divs with class 'sqp-progressbar' are detected as 'Playback progress bar' by the script 'vo-player-controller.js'
+  events listeners and state are driven by the script itself (no need to declare anything more) -->
+  <div class="sqp-overlay-noautohide sqp-progressbar" >
+    <div class="sqp-progressbar-background pointer-cursor">
+      <div class="sqp-chapters">
+        <!-- <div class="sqp-chapter"></div> -->
+        <div class="sqp-chapter-live-button">LIVE</div>
+      </div>
+      <div class="sqp-progressbar-progress sqp-progressbar-progress-play sqp-ui-main-bgcolor">
+        <div class="sqp-progressbar-progress-endpoint sqp-ui-main-bgcolor"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sqp-controls-toolbar">
+
+      <div class="sqp-tooltip">
+        <div class="sqp-tooltip-thumbnail"><canvas class="sqp-thumbnail-canvas"></canvas></div>
+        <div class="sqp-tooltip-time">00:00</div>
+      </div>
+
+      <div class="sqp-overlay-noautohide sqp-controls-box">
+
+      <!-- divs with class 'sqp-play-btn' are detected as 'Play' buttons by the script 'vo-player-controller.js'
+       events listeners and button state are driven by the script itself (no need to declare anything more) -->
+      <button type="button" class="sqp-play-btn sqp-button sqp-left"><svg-icon class="svg-icon icon" src="resources/images/play.svg"></svg-icon></button>
+
+      <!-- divs with class 'sqp-pause-btn' are detected as 'Pause' buttons by the script 'vo-player-controller.js'
+        events listeners and button state are driven by the script itself (no need to declare anything more) -->
+      <button type="button" class="sqp-pause-btn sqp-button sqp-left"><svg-icon class="svg-icon icon" src="resources/images/pause.svg"></svg-icon></button>
+
+      <!-- divs with class 'sqp-volume-btn' are detected as 'Volume' buttons by the script 'vo-player-controller.js'
+        events listeners and button state are driven by the script itself (no need to declare anything more)
+        within this divs, the controller will look for items with classes 'volume-icon-off' and 'volume-icon-l(1,3)'
+        as icons for the various volume levels (off, then from lowest to highest)
+      -->
+      <button type="button" class="sqp-volume-btn sqp-button sqp-left">
+        <svg-icon class="svg-icon icon volume-icon-off" src="resources/images/volume-off.svg"></svg-icon>
+        <svg-icon class="svg-icon icon volume-icon-l1" src="resources/images/volume-l1.svg"></svg-icon>
+        <svg-icon class="svg-icon icon volume-icon-l2" src="resources/images/volume-l2.svg"></svg-icon>
+        <svg-icon class="svg-icon icon volume-icon-l3" src="resources/images/volume-l3.svg"></svg-icon>
+      </button>
+
+      <!-- divs with class 'sqp-volume-bar' are detected as 'Volume' setting area by the script 'vo-player-controller.js'
+        events listeners and state are driven by the script itself (no need to declare anything more)
+        within this element, the controller will vary width of element with class 'sqp-volume-bar-level' from 0% to 100%
+        to reprensent the volume of the video
+        Note, this zone is meant to be paired alongside the 'sqp-volume-btn'.
+        The controller will automatically hide the volume bar area when it is not 'hovered' and if the volume is not currently being
+        adjusted. The volume bar area is animated in when hovering the voume button
+        This automatic hidding behavior can be disabled by setting the attribute alwayson to the sqp-volume-bar element
+      -->
+      <div class="sqp-volume-bar">
+        <div class="sqp-volume-bar-bg">
+          <div class="sqp-volume-bar-level"><div class="sqp-volume-bar-level-endpoint"></div></div>
+        </div>
+      </div>
+
+      <div class="sqp-player-controls-times-zone">
+        <!-- the html content of this divs with class 'sqp-player-time' will be updated by the script 'vo-player-controller.js'
+         with the current playback time -->
+        <div class="sqp-time sqp-player-time">00:00</div>
+        <div class="sqp-time-separator">/</div>
+        <!-- the html content of divs with class 'sqp-media-duration' will be updated by javascript with the media duration -->
+        <div class="sqp-time sqp-media-duration">00:00</div>
+      </div>
+
+      <div class="sqp-advertising sqp-overlay-noautohide"></div>
+
+    </div>
+
+
+    <div class="sqp-overlay-noautohide sqp-right sqp-controls-box">
+      <!-- divs with class 'sqp-fullscreen-btn' are detected as 'Fullscreen' buttons by the javascript (switch to fullscreen )
+       events listeners and button state are driven by the script itself (no need to declare anything more) -->
+      <button type="button" class="sqp-fullscreen-btn sqp-button sqp-right"><svg-icon class="svg-icon icon" src="resources/images/maximize.svg"></svg-icon></button>
+
+      <!-- divs with class 'sqp-minimize-btn' are detected as 'Minimize' buttons by the javascript (exit fullscreen)
+       events listeners and button state are driven by the script itself (no need to declare anything more) -->
+      <button type="button" class="sqp-minimize-btn sqp-button sqp-right"><svg-icon class="svg-icon icon" src="resources/images/minimize.svg"></svg-icon></button>
+
+      <!-- divs with class 'sqp-resizeXY-btn' are detected as 'Resize' buttons by the javascript
+       events listeners and button state are driven by the script itself (no need to declare anything more) -->
+      <button type="button" class="sqp-resize75-btn sqp-button sqp-right"><svg-icon class="svg-icon icon" src="resources/images/resize75.svg"></svg-icon></button>
+      <button type="button" class="sqp-resize50-btn sqp-button sqp-right"><svg-icon class="svg-icon icon" src="resources/images/resize50.svg"></svg-icon></button>
+      <button type="button" class="sqp-resize25-btn sqp-button sqp-right"><svg-icon class="svg-icon icon" src="resources/images/resize25.svg"></svg-icon></button>
+
+      <!-- divs with class 'sqp-fullscreen-btn' are detected as 'Fullscreen' buttons by the javascript (switch to fullscreen )
+       events listeners and button state are driven by the script itself (no need to declare anything more) -->
+      <button type="button" class="sqp-button sqp-right sqp-options-btn"><svg-icon class="svg-icon icon" src="resources/images/options.svg"></svg-icon></button>
+
+      <!-- divs with class 'sqp-chromecast-btn_container' are detected as 'Chromecast' buttons by the javascript
+       events listeners and button state are driven by the script itself (no need to declare anything more) -->
+       <div class="sqp-chromecast-btn-container sqp-right" style="display:inline-block"></div>
+      <!--<button type="button" class="sqp-chromecast-btn sqp-button sqp-right"><img class="svg-icon icon" src="resources/images/chromecast.svg"></button>-->
+
+      <div class="sqp-bandwidth-indication sqp-right"></div>
+      
+      <div class="sqp-right"><input type="number" id="channelselector" placeholder="csatorna ID"/><input type="button" value="go" onclick="switchChannel()"/></div>
+    </div>
+  </div>
+</div>
+</div>
